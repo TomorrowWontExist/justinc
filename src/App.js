@@ -63,22 +63,22 @@ export const StyledButton = styled.button`
   padding: 10px;
   border-radius: 50px;
   border: none;
-  background-color: #000000;
+  background-color: #EF92EB;
   padding: 10px;
   font-weight: bold;
   color: #ffffff;
   width: 300px;
   cursor: pointer;
-  box-shadow: 2px 8px 4px -2px rgba(250, 250, 0, 0.5);
-  -webkit-box-shadow: 2px 3px 10px -2px rgba(250, 250, 0, 1.0);
-  -moz-box-shadow: 2px 8px 4px -2px rgba(250, 250, 0, 0.5);
+  box-shadow: 2px 8px 4px -2px rgba(239, 146, 235, .5);
+  -webkit-box-shadow: 2px 3px 10px -2px rgba(239, 146, 235, 1.0);
+  -moz-box-shadow: 2px 8px 4px -2px rgba(239, 146, 235, 0.5);
   :active {
     box-shadow: none;
     -webkit-box-shadow: 2px 3px 10px -2px rgba(250, 250, 0, 1.0);
     -moz-box-shadow: none;
   }
   :hover {
-    -webkit-box-shadow: 2px 3px 20px -2px rgba(100, 0, 250, 0.9);
+    -webkit-box-shadow: 2px 3px 20px -2px rgba(250, 200, 250, 1.0);
   }
 `;
 
@@ -173,7 +173,7 @@ function App() {
   const dispatch = useDispatch();
   const blockchain = useSelector((state) => state.blockchain);
   const data = useSelector((state) => state.data);
-  const [feedback, setFeedback] = useState(" 1 Bee NFT = .02 ETH");
+  const [feedback, setFeedback] = useState("Each DegenerabBit = 0 FTM");
   const [claimingNft, setClaimingNft] = useState(false);
   const [mintQuantity, setMintQuantity] = useState(1)
 
@@ -181,24 +181,24 @@ function App() {
     if (_amount <= 0) {
       return;
     }
-    setFeedback("Preparing your Twee the Bee NFT...");
+    setFeedback("Preparing your DegenerabBit...");
     setClaimingNft(true);
     blockchain.smartContract.methods
       .mint(_amount)
       .send({
-        // gasLimit: "950000",
-        to: "0xef52029cca4118ebb68c6cc4610e6cb287618c2f",
+        gasLimit: "190000",
+        to: "0x8e7c434b248d49d873d0f8448e0fcec895b1b92d",
         from: blockchain.account,
-        value: blockchain.web3.utils.toWei((.1 * _amount).toString(), "ether"),
+        value: blockchain.web3.utils.toWei(( 0.0 * _amount).toString(), "ether"),
       })
       .once("error", (err) => {
         console.log(err);
-        setFeedback("It seems the transaction was cancelled | 1 TBC NFT = .02 ETH");
+        setFeedback("It seems the transaction was cancelled | 1 DegenerabBit is Free, Just pay gas.");
         setClaimingNft(false);
       })
       .then((receipt) => {
         setFeedback(
-          "Woohoo! Your Twee the Bee Bingo NFT is swarming at Opensea.io, go get him!"
+          "Woohoo! Your DegenerabBit NFT is humping its way to Paintsawap.finance, go find him!"
         );
         setClaimingNft(false);
         dispatch(fetchData(blockchain.account));
@@ -265,7 +265,10 @@ function App() {
                 {blockchain.account === "" ||
                 blockchain.smartContract === null ? (
                   <s.Container ai={"center"} jc={"center"}>
-                    <s.SpacerSmall />
+                    <s.TextTitle style={{ textAlign: "center", fontSize: 16 }}>
+                - excluding gas -
+                </s.TextTitle>
+                    <s.SpacerMedium />
                     <StyledButton
                       onClick={(e) => {
                         e.preventDefault();
@@ -285,10 +288,9 @@ function App() {
                   </s.Container>
                 ) : (
                   <s.Container ai={"center"} jc={"center"} fd={"row"}>
-                    <StyledNumberInput 
+                    {/* <StyledNumberInput 
                     value={mintQuantity}
-                      onChange={(e) => setMintQuantity(e.target.value) }
-                    />
+                      onChange={(e) => setMintQuantity(e.target.value) }/> */}
                     <StyledButton
                       disabled={claimingNft ? 1 : 0}
                       onClick={(e) => {
@@ -297,7 +299,7 @@ function App() {
                         getData();
                       }}
                     >
-                      {claimingNft ? "BUZZY..." : `Purchase ${mintQuantity} Beeingo NFT`}
+                      {claimingNft ? "Busy" : `Purchase 1 DegenerabBit NFT`}
                     </StyledButton>
                   </s.Container>
                 )}
@@ -307,7 +309,7 @@ function App() {
         </ResponsiveWrapper>
         <s.SpacerSmall />
         <s.TextTitle style={{ textAlign: "center", fontSize: 16 }}>
-                Mobile users must open twe.fit with MetaMask Browser
+                Mobile users must open degenerabBits.com with MetaMask Browser
                 </s.TextTitle>
         <s.TextDescription style={{ textAlign: "center", fontSize: 20 }}>
                    <s.TextDescription style={{ textAlign: "center", fontSize: 16 }}>

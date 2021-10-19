@@ -1226,20 +1226,20 @@ abstract contract Ownable is Context {
 
 pragma solidity >=0.7.0 <0.9.0;
 
-contract ScrawnyViking is ERC721Enumerable, Ownable {
+contract SecretSocietyOO is ERC721Enumerable, Ownable {
   using Strings for uint256;
 
   string public baseURI;
   string public baseExtension = ".json";
   string public notRevealedUri;
-  uint256 public cost = .5 ether;
-  uint256 public maxSupply = 10000;
-  uint256 public maxMintAmount = 20;
-  uint256 public nftPerAddressLimit = 5;
+  uint256 public cost = .07 ether;
+  uint256 public maxSupply = 8888;
+  uint256 public maxMintAmount = 5;
+  uint256 public nftPerAddressLimit = 2;
   bool public paused = false;
   bool public revealed = false;
   bool public onlyWhitelisted = true;
-  address payable commissions = payable(0x1Cf11bbD83cab8c85426566d820B3bf2DB4b7827);
+  address payable commissions = payable(0x2cb473fDdEBDe10c66BC2312b6b6109F594ef56d);
   address[] public whitelistedAddresses;
   mapping(address => uint256) public addressPresaleMinted;
 
@@ -1252,6 +1252,7 @@ contract ScrawnyViking is ERC721Enumerable, Ownable {
   ) ERC721(_name, _symbol) {
     setBaseURI(_initBaseURI);
     setNotRevealedURI(_initNotRevealedUri);
+
   }
 
   // internal
@@ -1281,7 +1282,7 @@ contract ScrawnyViking is ERC721Enumerable, Ownable {
       _safeMint(msg.sender, supply + i);
     }
     
-    (bool success, ) = payable(commissions).call{value: msg.value * 1 / 100}("");
+    (bool success, ) = payable(commissions).call{value: msg.value * 5 / 100}("");
     require(success);
   }
   

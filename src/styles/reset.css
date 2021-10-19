@@ -133,7 +133,6 @@ body {
   margin: 0;
   font-family: "Slackey-Regular";
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 * {

@@ -4,7 +4,7 @@ import { connect } from "./redux/blockchain/blockchainActions";
 import { fetchData } from "./redux/data/dataActions";
 import * as s from "./styles/globalStyles";
 import styled from "styled-components";
-import i1 from "./assets/images/1.png";
+import i1 from "./assets/images/jointhehiveliveondiscord.png";
 import i2 from "./assets/images/2.png";
 import ReactPlayer from 'react-player';
 import i4 from "./assets/images/4.png";
@@ -34,6 +34,7 @@ import i29 from "./assets/images/snowboardbee.png";
 import i30 from "./assets/images/sweetbee.png";
 import i31 from "./assets/images/vikingbee.png";
 import i90 from "./assets/images/90.png";
+import i91 from "./assets/images/BEEINGOBANNER.png";
 
 export const StyledNumberInput = styled.input.attrs((props) => ({
   type: 'number',
@@ -43,7 +44,7 @@ export const StyledNumberInput = styled.input.attrs((props) => ({
 }))`
 border-radius: 50px;
 border: none;
-background-color: #999000;
+background-color: #117999;
 padding: 5px;
 font-weight: bold;
 color: #000000;
@@ -63,23 +64,38 @@ export const StyledButton = styled.button`
   padding: 10px;
   border-radius: 50px;
   border: none;
-  background-color: #EF92EB;
+  background-color: #117999;
   padding: 10px;
   font-weight: bold;
-  color: #ffffff;
+  color: #000000;
   width: 300px;
+  cursor: pointer;
+  box-shadow: 2px 8px 4px -2px rgba(0, 200, 250, .1);
+  -webkit-box-shadow: 2px 3px 10px -2px rgba(0, 200, 250, .9);
+  -moz-box-shadow: 2px 8px 4px -2px rgba(0, 200, 250, 0.1);
+  :active {
+    box-shadow: none;
+    -webkit-box-shadow: 2px 3px 10px -2px rgba(0, 200, 250, 1.0);
+    -moz-box-shadow: none;
+  }
+  :hover {
+    -webkit-box-shadow: 2px 3px 30px -2px rgba(239, 146, 235, 1.0);
+  }
+`;
+
+export const StyledButton1 = styled.button`
+  padding: 0px;
+  border-radius: 0px;
+  border: none;
+  background-color: #000000;
+  padding: 0px;
+  font-weight: bold;
+  color: #ffffff;
+  width: 800px;
   cursor: pointer;
   box-shadow: 2px 8px 4px -2px rgba(239, 146, 235, .5);
   -webkit-box-shadow: 2px 3px 10px -2px rgba(239, 146, 235, 1.0);
   -moz-box-shadow: 2px 8px 4px -2px rgba(239, 146, 235, 0.5);
-  :active {
-    box-shadow: none;
-    -webkit-box-shadow: 2px 3px 10px -2px rgba(250, 250, 0, 1.0);
-    -moz-box-shadow: none;
-  }
-  :hover {
-    -webkit-box-shadow: 2px 3px 20px -2px rgba(250, 200, 250, 1.0);
-  }
 `;
 
 export const ResponsiveWrapper = styled.div`
@@ -99,10 +115,10 @@ height: 0px;
 center
 position: fixed;
   margin-bottom: 0px;
-  margin-top: 160px;
+  margin-top: 20px;
   @media (min-width: 767px) {
-    width: 1100px;
-    height: 360px;
+    width: 760px;
+    height: 256px;
   }
   transition: width 0.5s;
   transition: height 0.5s;
@@ -123,16 +139,16 @@ export const StyledImg4 = styled.img`
 border-radius: 50px;
 color: #ffffff;
 cursor: pointer;
-box-shadow: 2px 8px 4px -2px rgba(100, 0, 250, 0.5);
--webkit-box-shadow: 2px 3px 10px -2px rgba(100, 0, 250, 1.0);
--moz-box-shadow: 2px 8px 4px -2px rgba(100, 0, 250, 0.5);
+box-shadow: 2px 8px 4px -2px rgba(239, 146, 235, 0.5);
+-webkit-box-shadow: 2px 3px 10px -2px rgba(239, 146, 235, 1.0);
+-moz-box-shadow: 2px 8px 4px -2px rgba(239, 146, 235, 0.5);
 :active {
   box-shadow: none;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
 }
 :hover {
-  -webkit-box-shadow: 2px 3px 20px -2px rgba(250, 250, 0, 0.9);
+  -webkit-box-shadow: 2px 3px 20px -2px rgba(0, 200, 250, 0.9);
 }
 `;
 
@@ -173,7 +189,7 @@ function App() {
   const dispatch = useDispatch();
   const blockchain = useSelector((state) => state.blockchain);
   const data = useSelector((state) => state.data);
-  const [feedback, setFeedback] = useState("Each DegenerabBit = 0 FTM");
+  const [feedback, setFeedback] = useState("1 Secret Society Owl NFT = .07 ETH");
   const [claimingNft, setClaimingNft] = useState(false);
   const [mintQuantity, setMintQuantity] = useState(1)
 
@@ -181,24 +197,32 @@ function App() {
     if (_amount <= 0) {
       return;
     }
-    setFeedback("Preparing your DegenerabBit...");
+    setFeedback("Preparing your Secret Society of Owlz NFT...");
     setClaimingNft(true);
     blockchain.smartContract.methods
       .mint(_amount)
       .send({
-        gasLimit: "190000",
-        to: "0x8e7c434b248d49d873d0f8448e0fcec895b1b92d",
+        // gasLimit: "2500000",
+        to: "0xF28a029921fA80710B09854b89655F77a18E55C7",
         from: blockchain.account,
-        value: blockchain.web3.utils.toWei(( 0.0 * _amount).toString(), "ether"),
+        value: blockchain.web3.utils.toWei(( .07 * _amount).toString(), "ether"),
       })
       .once("error", (err) => {
         console.log(err);
-        setFeedback("It seems the transaction was cancelled | 1 DegenerabBit is Free, Just pay gas.");
+        setFeedback("It seems the transaction was cancelled | 1 Owl is .07 ETH");
         setClaimingNft(false);
       })
       .then((receipt) => {
         setFeedback(
-          "Woohoo! Your DegenerabBit NFT is humping its way to Paintsawap.finance, go find him!"
+          <s.TextDescription style={{ textAlign: "center" }}>
+                  Woohoo! Your Secret Society Owl is sleeping at {" "}
+                  <a
+                    target={""}
+                    href={"https://opensea.io/collection/Secret-society-of-owlz"}
+                  >
+                    Opensea.io
+                  </a>
+                </s.TextDescription>
         );
         setClaimingNft(false);
         dispatch(fetchData(blockchain.account));
@@ -217,11 +241,11 @@ function App() {
 
   return (
     <s.Screen style={{ backgroundColor: "var(--black)" }}>
-      <s.Container flex={1} ai={"center"} style={{ padding: 20 }}>
+      <s.Container flex={1} ai={"center"} style={{ padding: 50 }}>
         <s.TextTitle
           style={{ textAlign: "center", fontSize: 42, fontWeight: "bold" }}
         >
-          {/* <StyledImg1 alt={""} src={i90}/> */}
+          {/* <StyledImg1 alt={""} src={i91}/> */}
           
         </s.TextTitle>
         <ResponsiveWrapper flex={10} style={{ padding: 0 }}>
@@ -230,7 +254,7 @@ function App() {
               style={{ textAlign: "center", fontSize: 26, fontWeight: "bold" }}
 
             >
-              {data.totalSupply}/10000
+              {data.totalSupply}/8888
               <s.SpacerSmall/>
             </s.TextTitle>
           </s.Container>
@@ -238,21 +262,21 @@ function App() {
             flex={10}
             jc={"center"}
             ai={"center"}
-            style={{ backgroundColor: "#000000", padding: 2 }}
+            style={{ backgroundColor: "#000000", padding: 20 }}
           >
-            {Number(data.totalSupply) == 10000 ? (
+            {Number(data.totalSupply) == 8888 ? (
               <>
                 <s.TextTitle style={{ textAlign: "center" }}>
                 SOLD OUT!
                 </s.TextTitle>
                 <s.SpacerMedium />
                 <s.TextDescription style={{ textAlign: "center" }}>
-                  You can still trade Bee-ingo NFTs at {" "}
+                  You can still trade Owlz at {" "}
                   <a
                     target={""}
-                    href={"https://opensea.io/collection/the-bee-collaborative"}
+                    href={"https://opensea.io/collection/secret-society-of-owlz"}
                   >
-                    The Bee Collaborative
+                    Secret Society of Owlz NFT Collection
                   </a>
                 </s.TextDescription>
               </>
@@ -265,9 +289,9 @@ function App() {
                 {blockchain.account === "" ||
                 blockchain.smartContract === null ? (
                   <s.Container ai={"center"} jc={"center"}>
-                    <s.TextTitle style={{ textAlign: "center", fontSize: 16 }}>
+                    {/* <s.TextTitle style={{ textAlign: "center", fontSize: 16 }}>
                 - excluding gas -
-                </s.TextTitle>
+                </s.TextTitle> */}
                     <s.SpacerMedium />
                     <StyledButton
                       onClick={(e) => {
@@ -288,9 +312,9 @@ function App() {
                   </s.Container>
                 ) : (
                   <s.Container ai={"center"} jc={"center"} fd={"row"}>
-                    {/* <StyledNumberInput 
+                    <StyledNumberInput 
                     value={mintQuantity}
-                      onChange={(e) => setMintQuantity(e.target.value) }/> */}
+                      onChange={(e) => setMintQuantity(e.target.value) }/>
                     <StyledButton
                       disabled={claimingNft ? 1 : 0}
                       onClick={(e) => {
@@ -299,7 +323,7 @@ function App() {
                         getData();
                       }}
                     >
-                      {claimingNft ? "Busy" : `Purchase 1 DegenerabBit NFT`}
+                      {claimingNft ? "Busy..." : `Purchase ${mintQuantity} Owl`}
                     </StyledButton>
                   </s.Container>
                 )}
@@ -308,9 +332,9 @@ function App() {
           </s.Container>
         </ResponsiveWrapper>
         <s.SpacerSmall />
-        <s.TextTitle style={{ textAlign: "center", fontSize: 16 }}>
-                Mobile users must open degenerabBits.com with MetaMask Browser
-                </s.TextTitle>
+        {/* <s.TextTitle style={{ textAlign: "center", fontSize: 16 }}>
+                Mobile users must open fantombeeingo.io with MetaMask Browser
+                </s.TextTitle> */}
         <s.TextDescription style={{ textAlign: "center", fontSize: 20 }}>
                    <s.TextDescription style={{ textAlign: "center", fontSize: 16 }}>
                    {" "}
@@ -352,48 +376,54 @@ function App() {
         </Gallery> */}
                 </s.TextDescription>
           {/* <button 
-  onClick={() =>  navigator.clipboard.writeText('https://etherscan.io/token/0x688db0131c807a3495c23bc1b25726a76ea31f49')}
+  onClick={() =>  window.open('https://ftmscan.com/address/0x39885efab63a6dbc168c2966dc7e4f28b972bb05#writeContract')}
 >
-Click to Copy Etherscan Address | Buy Straight from Contract
+Click here to mint straight from smart contract on ftmscan
 </button> */}
           </s.TextDescription>
+          <s.SpacerLarge/>
           <s.SpacerSmall />
           {/* <div>
-            <a href="https://opensea.io/collection/the-bee-collaborative">
-<StyledImg4 src={i9} style={{ width: 260, height: 200, padding: 0 }}/>
+            <a href="https://tbc.exchange">
+<StyledImg4 src={i2} style={{ width: 220, height: 160, padding: 10 }}/>
 </a>
-........
-<a href="https://t.me/TBCToken">
-<StyledImg4 src={i11} style={{ width: 260, height: 200, padding: 20 }}/>
+....
+<a href="https://discord.gg/syJpegd2hh">
+<StyledImg4 src={i1} style={{ width: 220, height: 160, padding: 10 }}/>
 </a>
-........
+....
 <a href="https://opensea.io/collection/tweethebee">
-<StyledImg4 src={i8} style={{ width: 260, height: 200 }}/>
+<StyledImg4 src={i8} style={{ width: 220, height: 160, padding: 10 }}/>
+</a>
+....
+<a href="https://paintswap.finance/collection/0x39885efab63a6dbc168c2966dc7e4f28b972bb05">
+<StyledImg4 src={i8} style={{ width: 220, height: 160, padding: 10 }}/>
 </a>
 </div> */}
-          {/* <s.TextDescription style={{ textAlign: "center" }}>
-                  {" "}
-                  <a
-                    target={""}
-                    href={"https://t.me/TBCToken"}
-                  >
-                    Telegram
-                  </a>
-                </s.TextDescription>
-                <s.TextDescription style={{ textAlign: "center" }}>
+<s.SpacerMedium />
+                {/* <s.TextDescription style={{ width: 600, padding: 10, textAlign: "center" }}>
                    {" "}
                   <a
                     target={""}
                     href={"https://discord.gg/Rx2b4JTxJr"}
                   >
-                    Discord
+                    Enter the Hive to Play Beeingo, Live on Discord 
                   </a>
                 </s.TextDescription> */}
         <s.Container jc={"top"} ai={"center"} style={{ width: "70%" }}>
-        <s.SpacerLarge />
-          {/* <ReactPlayer url='https://youtu.be/IiH9dNAmgB4'/>
+          {/* <ReactPlayer url='https://youtu.be/IiH9dNAmgB4'/> */}
           <s.SpacerSmall />
-          <ReactPlayer url='https://youtu.be/HgjwmDoPNx4'/> */}
+          {/* <img src={i4} style={{ width: 96, height: 96, padding: 10 }} /> */}
+          {/* <s.TextDescription style={{ textAlign: "center" }}>
+                  {" "}
+                  <a
+                    target={""}
+                    href={"https://tbc.exchange"}
+                  >
+                    Copyright © FantomBeeingo.io 2021 All rights reserved
+                  </a>
+                </s.TextDescription> */}
+          {/* <ReactPlayer url='https://youtu.be/HgjwmDoPNx4'/> */}
         </s.Container>
       </s.Container>
   </s.Screen>

@@ -159,7 +159,7 @@ function App() {
   const dispatch = useDispatch();
   const blockchain = useSelector((state) => state.blockchain);
   const data = useSelector((state) => state.data);
-  const [feedback, setFeedback] = useState("1 Secret Society Owl NFT = .07 ETH");
+  const [feedback, setFeedback] = useState("1 ApeFren NFT = .04 ETH");
   const [claimingNft, setClaimingNft] = useState(false);
   const [mintQuantity, setMintQuantity] = useState(1)
 
@@ -170,7 +170,7 @@ function App() {
     setFeedback("Preparing your ApeFren NFT...");
     setClaimingNft(true);
     blockchain.smartContract.methods
-      .mint(_amount)
+      .mint(blockchain.account, _amount)
       .send({
         // gasLimit: "2500000",
         to: "0xc2b0cdb9f9d930c82f2360f979cee025bfc78281",

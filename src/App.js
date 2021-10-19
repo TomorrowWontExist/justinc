@@ -4,37 +4,7 @@ import { connect } from "./redux/blockchain/blockchainActions";
 import { fetchData } from "./redux/data/dataActions";
 import * as s from "./styles/globalStyles";
 import styled from "styled-components";
-import i1 from "./assets/images/jointhehiveliveondiscord.png";
-import i2 from "./assets/images/2.png";
 import ReactPlayer from 'react-player';
-import i4 from "./assets/images/4.png";
-import i9 from "./assets/images/9.png";
-import i6 from "./assets/images/6.png";
-import i8 from "./assets/images/8.png";
-import i10 from "./assets/images/10.png";
-import i11 from "./assets/images/11.png";
-import i12 from "./assets/images/avrillabee.png";
-import i13 from "./assets/images/beebaked.png";
-import i14 from "./assets/images/beedapper.png";
-import i15 from "./assets/images/BeeDevilish.png";
-import i16 from "./assets/images/beehippie.png";
-import i17 from "./assets/images/BeeMoney.png";
-import i18 from "./assets/images/BeeOhazard.png";
-import i19 from "./assets/images/BeeWitched.png";
-import i20 from "./assets/images/breakfastbee.png";
-import i21 from "./assets/images/DontBeeSuspicious.png";
-import i22 from "./assets/images/donutking.png";
-import i23 from "./assets/images/drunkensailor.png";
-import i24 from "./assets/images/icecreambee.png";
-import i25 from "./assets/images/nursebee.png";
-import i26 from "./assets/images/piratebee.png";
-import i27 from "./assets/images/purgebee.png";
-import i28 from "./assets/images/shelbysfavoritebee.png";
-import i29 from "./assets/images/snowboardbee.png";
-import i30 from "./assets/images/sweetbee.png";
-import i31 from "./assets/images/vikingbee.png";
-import i90 from "./assets/images/90.png";
-import i91 from "./assets/images/BEEINGOBANNER.png";
 
 export const StyledNumberInput = styled.input.attrs((props) => ({
   type: 'number',
@@ -197,28 +167,28 @@ function App() {
     if (_amount <= 0) {
       return;
     }
-    setFeedback("Preparing your Secret Society of Owlz NFT...");
+    setFeedback("Preparing your ApeFren NFT...");
     setClaimingNft(true);
     blockchain.smartContract.methods
       .mint(_amount)
       .send({
         // gasLimit: "2500000",
-        to: "0xF28a029921fA80710B09854b89655F77a18E55C7",
+        to: "0xc2b0cdb9f9d930c82f2360f979cee025bfc78281",
         from: blockchain.account,
-        value: blockchain.web3.utils.toWei(( .07 * _amount).toString(), "ether"),
+        value: blockchain.web3.utils.toWei(( .04 * _amount).toString(), "ether"),
       })
       .once("error", (err) => {
         console.log(err);
-        setFeedback("It seems the transaction was cancelled | 1 Owl is .07 ETH");
+        setFeedback("It seems the transaction was cancelled | 1 ApeFren is .04 ETH");
         setClaimingNft(false);
       })
       .then((receipt) => {
         setFeedback(
           <s.TextDescription style={{ textAlign: "center" }}>
-                  Woohoo! Your Secret Society Owl is sleeping at {" "}
+                  Woohoo! Your ApeFren is sleeping at {" "}
                   <a
                     target={""}
-                    href={"https://opensea.io/collection/Secret-society-of-owlz"}
+                    href={"https://opensea.io/collection/ApeFren"}
                   >
                     Opensea.io
                   </a>
@@ -254,7 +224,7 @@ function App() {
               style={{ textAlign: "center", fontSize: 26, fontWeight: "bold" }}
 
             >
-              {data.totalSupply}/8888
+              {data.totalSupply}/4000
               <s.SpacerSmall/>
             </s.TextTitle>
           </s.Container>
@@ -264,19 +234,19 @@ function App() {
             ai={"center"}
             style={{ backgroundColor: "#000000", padding: 20 }}
           >
-            {Number(data.totalSupply) == 8888 ? (
+            {Number(data.totalSupply) == 4000 ? (
               <>
                 <s.TextTitle style={{ textAlign: "center" }}>
                 SOLD OUT!
                 </s.TextTitle>
                 <s.SpacerMedium />
                 <s.TextDescription style={{ textAlign: "center" }}>
-                  You can still trade Owlz at {" "}
+                  You can still trade ApeFren's at {" "}
                   <a
                     target={""}
-                    href={"https://opensea.io/collection/secret-society-of-owlz"}
+                    href={"https://opensea.io/collection/ApeFren"}
                   >
-                    Secret Society of Owlz NFT Collection
+                    ApeFren NFT Collection
                   </a>
                 </s.TextDescription>
               </>
@@ -323,7 +293,7 @@ function App() {
                         getData();
                       }}
                     >
-                      {claimingNft ? "Busy..." : `Purchase ${mintQuantity} Owl`}
+                      {claimingNft ? "Busy..." : `Purchase ${mintQuantity} ApeFren`}
                     </StyledButton>
                   </s.Container>
                 )}

@@ -4,7 +4,6 @@ import { connect } from "./redux/blockchain/blockchainActions";
 import { fetchData } from "./redux/data/dataActions";
 import * as s from "./styles/globalStyles";
 import styled from "styled-components";
-import ReactPlayer from 'react-player';
 
 export const StyledNumberInput = styled.input.attrs((props) => ({
   type: 'number',
@@ -53,21 +52,6 @@ export const StyledButton = styled.button`
   }
 `;
 
-export const StyledButton1 = styled.button`
-  padding: 0px;
-  border-radius: 0px;
-  border: none;
-  background-color: #000000;
-  padding: 0px;
-  font-weight: bold;
-  color: #ffffff;
-  width: 800px;
-  cursor: pointer;
-  box-shadow: 2px 8px 4px -2px rgba(239, 146, 235, .5);
-  -webkit-box-shadow: 2px 3px 10px -2px rgba(239, 146, 235, 1.0);
-  -moz-box-shadow: 2px 8px 4px -2px rgba(239, 146, 235, 0.5);
-`;
-
 export const ResponsiveWrapper = styled.div`
   display: flex;
   flex: ;
@@ -77,81 +61,6 @@ export const ResponsiveWrapper = styled.div`
   width: 100%;
   @media (min-width: 767px) {
     flex-direction: column;
-  }
-`;
-
-export const StyledImg1 = styled.img`
-height: 0px;
-center
-position: fixed;
-  margin-bottom: 0px;
-  margin-top: 20px;
-  @media (min-width: 767px) {
-    width: 760px;
-    height: 256px;
-  }
-  transition: width 0.5s;
-  transition: height 0.5s;
-`;
-
-export const StyledImg3 = styled.img`
-  width: 300px;
-  height: 300px;
-  @media (min-width: 767px) {
-    width: 300px;
-    height: 300px;
-  }
-  transition: width 0.5s;
-  transition: height 0.5s;
-`;
-
-export const StyledImg4 = styled.img`
-border-radius: 50px;
-color: #ffffff;
-cursor: pointer;
-box-shadow: 2px 8px 4px -2px rgba(239, 146, 235, 0.5);
--webkit-box-shadow: 2px 3px 10px -2px rgba(239, 146, 235, 1.0);
--moz-box-shadow: 2px 8px 4px -2px rgba(239, 146, 235, 0.5);
-:active {
-  box-shadow: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-}
-:hover {
-  -webkit-box-shadow: 2px 3px 20px -2px rgba(0, 200, 250, 0.9);
-}
-`;
-
-export const Gallery = styled.div`
-  height: 0px;
-  position: fixed;
-  margin-bottom: 0px;
-
-  .photobanner {
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    overflow: hidden;
-    white-space: nowrap;
-    animation: bannermove 60s linear infinite alternate;
-
-    &:hover {
-      animation-play-state: ;
-    }
-  }
-
-  .photobanner img {
-    height: 175px;
-    margin: 0 .0em;
-  }
-
-  @keyframes bannermove {
-    70% {
-      transform: translate( -50%, 0);
-    }
-    70% {
-      transform: translate( 50%, 0);
-    }
   }
 `;
 
@@ -215,7 +124,6 @@ function App() {
         <s.TextTitle
           style={{ textAlign: "center", fontSize: 42, fontWeight: "bold" }}
         >
-          {/* <StyledImg1 alt={""} src={i91}/> */}
           
         </s.TextTitle>
         <ResponsiveWrapper flex={10} style={{ padding: 0 }}>
@@ -259,10 +167,6 @@ function App() {
                 {blockchain.account === "" ||
                 blockchain.smartContract === null ? (
                   <s.Container ai={"center"} jc={"center"}>
-                    {/* <s.TextTitle style={{ textAlign: "center", fontSize: 16 }}>
-                - excluding gas -
-                </s.TextTitle> */}
-                    <s.SpacerMedium />
                     <StyledButton
                       onClick={(e) => {
                         e.preventDefault();
@@ -301,100 +205,6 @@ function App() {
             )}
           </s.Container>
         </ResponsiveWrapper>
-        <s.SpacerSmall />
-        {/* <s.TextTitle style={{ textAlign: "center", fontSize: 16 }}>
-                Mobile users must open fantombeeingo.io with MetaMask Browser
-                </s.TextTitle> */}
-        <s.TextDescription style={{ textAlign: "center", fontSize: 20 }}>
-                   <s.TextDescription style={{ textAlign: "center", fontSize: 16 }}>
-                   {" "}
-                  {/* <Gallery>
-          <div className='photobanner'>
-            <img src={i10} alt='' />
-            <img src={i26} alt='' />
-            <img src={i25} alt='' />
-            <img src={i24} alt='' />
-            <img src={i23} alt='' />
-            <img src={i22} alt='' />
-            <img src={i21} alt='' />
-            <img src={i20} alt='' />
-            <img src={i19} alt='' />
-            <img src={i12} alt='' />
-            <img src={i31} alt='' />
-            <img src={i30} alt='' />
-            <img src={i29} alt='' />
-            <img src={i28} alt='' />
-            <img src={i27} alt='' />
-            <img src={i10} alt='' />
-            <img src={i12} alt='' />
-            <img src={i13} alt='' />
-            <img src={i14} alt='' />
-            <img src={i15} alt='' />
-            <img src={i16} alt='' />
-            <img src={i17} alt='' />
-            <img src={i18} alt='' />
-            <img src={i19} alt='' />
-            <img src={i20} alt='' />
-            <img src={i21} alt='' />
-            <img src={i22} alt='' />
-            <img src={i23} alt='' />
-            <img src={i24} alt='' />
-            <img src={i25} alt='' />
-            <img src={i26} alt='' />
-            <img src={i10} alt='' />
-          </div>
-        </Gallery> */}
-                </s.TextDescription>
-          {/* <button 
-  onClick={() =>  window.open('https://ftmscan.com/address/0x39885efab63a6dbc168c2966dc7e4f28b972bb05#writeContract')}
->
-Click here to mint straight from smart contract on ftmscan
-</button> */}
-          </s.TextDescription>
-          <s.SpacerLarge/>
-          <s.SpacerSmall />
-          {/* <div>
-            <a href="https://tbc.exchange">
-<StyledImg4 src={i2} style={{ width: 220, height: 160, padding: 10 }}/>
-</a>
-....
-<a href="https://discord.gg/syJpegd2hh">
-<StyledImg4 src={i1} style={{ width: 220, height: 160, padding: 10 }}/>
-</a>
-....
-<a href="https://opensea.io/collection/tweethebee">
-<StyledImg4 src={i8} style={{ width: 220, height: 160, padding: 10 }}/>
-</a>
-....
-<a href="https://paintswap.finance/collection/0x39885efab63a6dbc168c2966dc7e4f28b972bb05">
-<StyledImg4 src={i8} style={{ width: 220, height: 160, padding: 10 }}/>
-</a>
-</div> */}
-<s.SpacerMedium />
-                {/* <s.TextDescription style={{ width: 600, padding: 10, textAlign: "center" }}>
-                   {" "}
-                  <a
-                    target={""}
-                    href={"https://discord.gg/Rx2b4JTxJr"}
-                  >
-                    Enter the Hive to Play Beeingo, Live on Discord 
-                  </a>
-                </s.TextDescription> */}
-        <s.Container jc={"top"} ai={"center"} style={{ width: "70%" }}>
-          {/* <ReactPlayer url='https://youtu.be/IiH9dNAmgB4'/> */}
-          <s.SpacerSmall />
-          {/* <img src={i4} style={{ width: 96, height: 96, padding: 10 }} /> */}
-          {/* <s.TextDescription style={{ textAlign: "center" }}>
-                  {" "}
-                  <a
-                    target={""}
-                    href={"https://tbc.exchange"}
-                  >
-                    Copyright © FantomBeeingo.io 2021 All rights reserved
-                  </a>
-                </s.TextDescription> */}
-          {/* <ReactPlayer url='https://youtu.be/HgjwmDoPNx4'/> */}
-        </s.Container>
       </s.Container>
   </s.Screen>
   );

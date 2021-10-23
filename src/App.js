@@ -13,7 +13,7 @@ export const StyledNumberInput = styled.input.attrs((props) => ({
 }))`
 border-radius: 50px;
 border: none;
-background-color: #117999;
+background-color: #228c75;
 padding: 5px;
 font-weight: bold;
 color: #000000;
@@ -33,22 +33,22 @@ export const StyledButton = styled.button`
   padding: 10px;
   border-radius: 50px;
   border: none;
-  background-color: #117999;
+  background-color: #228c75;
   padding: 10px;
   font-weight: bold;
   color: #000000;
   width: 300px;
   cursor: pointer;
-  box-shadow: 2px 8px 4px -2px rgba(0, 200, 250, .1);
-  -webkit-box-shadow: 2px 3px 10px -2px rgba(0, 0, 0, .5);
-  -moz-box-shadow: 2px 8px 4px -2px rgba(0, 200, 250, 0.1);
+  box-shadow: 2px 8px 4px -2px rgba(0, 0, 0, 0);
+  -webkit-box-shadow: 2px 3px 10px -2px rgba(0, 0, 0, 0);
+  -moz-box-shadow: 2px 8px 4px -2px rgba(0, 0, 0, 0);
   :active {
     box-shadow: none;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
   }
   :hover {
-    -webkit-box-shadow: 0px 0px 10px -2px rgba(0, 255, 200, 1.0);
+    -webkit-box-shadow: 2px 2px 30px -2px rgba(0, 255, 200, 1.0);
   }
 `;
 

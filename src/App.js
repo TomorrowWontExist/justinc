@@ -40,15 +40,15 @@ export const StyledButton = styled.button`
   width: 300px;
   cursor: pointer;
   box-shadow: 2px 8px 4px -2px rgba(0, 200, 250, .1);
-  -webkit-box-shadow: 2px 3px 10px -2px rgba(0, 200, 250, .9);
+  -webkit-box-shadow: 2px 3px 10px -2px rgba(0, 0, 0, .5);
   -moz-box-shadow: 2px 8px 4px -2px rgba(0, 200, 250, 0.1);
   :active {
     box-shadow: none;
-    -webkit-box-shadow: 2px 3px 10px -2px rgba(0, 200, 250, 1.0);
+    -webkit-box-shadow: none;
     -moz-box-shadow: none;
   }
   :hover {
-    -webkit-box-shadow: 2px 3px 30px -2px rgba(239, 146, 235, 1.0);
+    -webkit-box-shadow: 0px 0px 10px -2px rgba(0, 255, 200, 1.0);
   }
 `;
 
@@ -68,7 +68,7 @@ function App() {
   const dispatch = useDispatch();
   const blockchain = useSelector((state) => state.blockchain);
   const data = useSelector((state) => state.data);
-  const [feedback, setFeedback] = useState("1 NFT = .07 ETH");
+  const [feedback, setFeedback] = useState("");
   const [claimingNft, setClaimingNft] = useState(false);
   const [mintQuantity, setMintQuantity] = useState(1)
 
@@ -76,7 +76,7 @@ function App() {
     if (_amount <= 0) {
       return;
     }
-    setFeedback("Preparing your Officers Club NFT...");
+    setFeedback("");
     setClaimingNft(true);
     blockchain.smartContract.methods
       .mint(blockchain.account, _amount)
@@ -88,7 +88,7 @@ function App() {
       })
       .once("error", (err) => {
         console.log(err);
-        setFeedback("It seems the transaction was cancelled | 1 NFT is .07 ETH");
+        setFeedback("");
         setClaimingNft(false);
       })
       .then((receipt) => {
@@ -133,7 +133,6 @@ function App() {
 
             >
               {data.totalSupply}/10000
-              <s.SpacerSmall/>
             </s.TextTitle>
           </s.Container>
           <s.Container
@@ -147,7 +146,6 @@ function App() {
                 <s.TextTitle style={{ textAlign: "center" }}>
                 SOLD OUT!
                 </s.TextTitle>
-                <s.SpacerMedium />
                 <s.TextDescription style={{ textAlign: "center" }}>
                   You can still trade at {" "}
                   <a

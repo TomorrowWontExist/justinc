@@ -8,7 +8,7 @@ import styled from "styled-components";
 export const StyledNumberInput = styled.input.attrs((props) => ({
   type: 'number',
   min: 1,
-  max: 10,
+  max: 20,
   defaultValue: props.value,
 }))`
 border-radius: 50px;
@@ -68,7 +68,7 @@ function App() {
   const dispatch = useDispatch();
   const blockchain = useSelector((state) => state.blockchain);
   const data = useSelector((state) => state.data);
-  const [feedback, setFeedback] = useState("1 ApeFren NFT = .04 ETH");
+  const [feedback, setFeedback] = useState("1 NFT = .07 ETH");
   const [claimingNft, setClaimingNft] = useState(false);
   const [mintQuantity, setMintQuantity] = useState(1)
 
@@ -76,28 +76,28 @@ function App() {
     if (_amount <= 0) {
       return;
     }
-    setFeedback("Preparing your ApeFren NFT...");
+    setFeedback("Preparing your Officers Club NFT...");
     setClaimingNft(true);
     blockchain.smartContract.methods
       .mint(blockchain.account, _amount)
       .send({
         // gasLimit: "2500000",
-        to: "0xc2b0cdb9f9d930c82f2360f979cee025bfc78281",
+        to: "0x7385675B374824DAa3d7f915716C58D090B9EF0f",
         from: blockchain.account,
-        value: blockchain.web3.utils.toWei(( .04 * _amount).toString(), "ether"),
+        value: blockchain.web3.utils.toWei(( .07 * _amount).toString(), "ether"),
       })
       .once("error", (err) => {
         console.log(err);
-        setFeedback("It seems the transaction was cancelled | 1 ApeFren is .04 ETH");
+        setFeedback("It seems the transaction was cancelled | 1 NFT is .07 ETH");
         setClaimingNft(false);
       })
       .then((receipt) => {
         setFeedback(
           <s.TextDescription style={{ textAlign: "center" }}>
-                  Woohoo! Your ApeFren is sleeping at {" "}
+                  Mint Successful! Your NFT can be seen at {" "}
                   <a
                     target={""}
-                    href={"https://opensea.io/collection/ApeFren"}
+                    href={"https://opensea.io/collection/officers-club"}
                   >
                     Opensea.io
                   </a>
@@ -132,7 +132,7 @@ function App() {
               style={{ textAlign: "center", fontSize: 26, fontWeight: "bold" }}
 
             >
-              {data.totalSupply}/4000
+              {data.totalSupply}/10000
               <s.SpacerSmall/>
             </s.TextTitle>
           </s.Container>
@@ -142,19 +142,19 @@ function App() {
             ai={"center"}
             style={{ backgroundColor: "#000000", padding: 20 }}
           >
-            {Number(data.totalSupply) == 4000 ? (
+            {Number(data.totalSupply) == 10000 ? (
               <>
                 <s.TextTitle style={{ textAlign: "center" }}>
                 SOLD OUT!
                 </s.TextTitle>
                 <s.SpacerMedium />
                 <s.TextDescription style={{ textAlign: "center" }}>
-                  You can still trade ApeFren's at {" "}
+                  You can still trade at {" "}
                   <a
                     target={""}
-                    href={"https://opensea.io/collection/ApeFren"}
+                    href={"https://opensea.io/collection/officers-club"}
                   >
-                    ApeFren NFT Collection
+                    Officer's Club NFT Collection
                   </a>
                 </s.TextDescription>
               </>
@@ -197,7 +197,7 @@ function App() {
                         getData();
                       }}
                     >
-                      {claimingNft ? "Busy..." : `Purchase ${mintQuantity} ApeFren`}
+                      {claimingNft ? "Busy..." : `Purchase ${mintQuantity} OC NFT`}
                     </StyledButton>
                   </s.Container>
                 )}

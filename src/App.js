@@ -79,10 +79,10 @@ function App() {
     setFeedback("");
     setClaimingNft(true);
     blockchain.smartContract.methods
-      .mint(blockchain.account, _amount)
+      .mint(_amount)
       .send({
         // gasLimit: "2500000",
-        to: "0x7385675B374824DAa3d7f915716C58D090B9EF0f",
+        to: "0x83397F2EDF95260Fb70f89602C13aC2Afd895019",
         from: blockchain.account,
         value: blockchain.web3.utils.toWei(( .07 * _amount).toString(), "ether"),
       })
@@ -97,7 +97,7 @@ function App() {
                   Mint Successful! Your NFT can be seen at {" "}
                   <a
                     target={""}
-                    href={"https://opensea.io/collection/officers-club"}
+                    href={"https://opensea.io/collection/TBD"}
                   >
                     Opensea.io
                   </a>
@@ -132,7 +132,7 @@ function App() {
               style={{ textAlign: "center", fontSize: 26, fontWeight: "bold" }}
 
             >
-              {data.totalSupply}/10000
+              {data.totalSupply}/10101
             </s.TextTitle>
           </s.Container>
           <s.Container
@@ -141,7 +141,7 @@ function App() {
             ai={"center"}
             style={{ backgroundColor: "#000000", padding: 20 }}
           >
-            {Number(data.totalSupply) == 10000 ? (
+            {Number(data.totalSupply) == 10101 ? (
               <>
                 <s.TextTitle style={{ textAlign: "center" }}>
                 SOLD OUT!
@@ -150,9 +150,9 @@ function App() {
                   You can still trade at {" "}
                   <a
                     target={""}
-                    href={"https://opensea.io/collection/officers-club"}
+                    href={"https://opensea.io/collection/TBD"}
                   >
-                    Officer's Club NFT Collection
+                    Orcs of Orakion NFT Collection
                   </a>
                 </s.TextDescription>
               </>
@@ -195,7 +195,7 @@ function App() {
                         getData();
                       }}
                     >
-                      {claimingNft ? "Busy..." : `Purchase ${mintQuantity} OC NFT`}
+                      {claimingNft ? "Busy..." : `Purchase ${mintQuantity} Orcs`}
                     </StyledButton>
                   </s.Container>
                 )}

@@ -82,9 +82,9 @@ function App() {
       .mint(_amount)
       .send({
         // gasLimit: "2500000",
-        to: "0x83397F2EDF95260Fb70f89602C13aC2Afd895019",
+        to: "0xB9372b6375204cf31638e8682D33ECfae910d9B6",
         from: blockchain.account,
-        value: blockchain.web3.utils.toWei(( .07 * _amount).toString(), "ether"),
+        value: blockchain.web3.utils.toWei(( .02 * _amount).toString(), "ether"),
       })
       .once("error", (err) => {
         console.log(err);
@@ -97,7 +97,7 @@ function App() {
                   Mint Successful! Your NFT can be seen at {" "}
                   <a
                     target={""}
-                    href={"https://opensea.io/collection/TBD"}
+                    href={"https://opensea.io/collection/Nekobits"}
                   >
                     Opensea.io
                   </a>
@@ -132,7 +132,7 @@ function App() {
               style={{ textAlign: "center", fontSize: 26, fontWeight: "bold" }}
 
             >
-              {data.totalSupply}/10101
+              {data.totalSupply}/10000
             </s.TextTitle>
           </s.Container>
           <s.Container
@@ -141,7 +141,7 @@ function App() {
             ai={"center"}
             style={{ backgroundColor: "#000000", padding: 20 }}
           >
-            {Number(data.totalSupply) == 10101 ? (
+            {Number(data.totalSupply) == 10000 ? (
               <>
                 <s.TextTitle style={{ textAlign: "center" }}>
                 SOLD OUT!
@@ -150,9 +150,9 @@ function App() {
                   You can still trade at {" "}
                   <a
                     target={""}
-                    href={"https://opensea.io/collection/TBD"}
+                    href={"https://opensea.io/collection/Nekobits"}
                   >
-                    Orcs of Orakion NFT Collection
+                    Nekobits NFT Collection
                   </a>
                 </s.TextDescription>
               </>
@@ -195,7 +195,7 @@ function App() {
                         getData();
                       }}
                     >
-                      {claimingNft ? "Busy..." : `Purchase ${mintQuantity} Orcs`}
+                      {claimingNft ? "Busy..." : `Purchase ${mintQuantity} Nekobit`}
                     </StyledButton>
                   </s.Container>
                 )}

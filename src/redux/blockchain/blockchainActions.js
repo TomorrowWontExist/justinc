@@ -51,10 +51,10 @@ export const connect = () => {
           method: "net_version",
         });
         // const NetworkData = await SmartContract.networks[networkId];
-        if (networkId == 4) {
+        if (networkId == 137) {
           const SmartContractObj = new Web3EthContract(
             SmartContract,
-            "0xB9372b6375204cf31638e8682D33ECfae910d9B6"
+            "0xd9662b04f08f89a9443933d38972492a21c27819"
           );
           dispatch(
             connectSuccess({
@@ -72,7 +72,7 @@ export const connect = () => {
           });
           // Add listeners end
         } else {
-          dispatch(connectFailed("Change network to Ethereum"));
+          dispatch(connectFailed("Change network to Matic"));
         }
       } catch (err) {
         dispatch(connectFailed("Something went wrong"));

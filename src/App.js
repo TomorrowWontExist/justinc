@@ -79,12 +79,12 @@ function App() {
     setFeedback("");
     setClaimingNft(true);
     blockchain.smartContract.methods
-      .mint(_amount)
+      .mint(blockchain.account, _amount)
       .send({
         // gasLimit: "2500000",
-        to: "0xB9372b6375204cf31638e8682D33ECfae910d9B6",
+        to: "0xd9662b04f08f89a9443933d38972492a21c27819",
         from: blockchain.account,
-        value: blockchain.web3.utils.toWei(( .02 * _amount).toString(), "ether"),
+        value: blockchain.web3.utils.toWei(( 50 * _amount).toString(), "ether"),
       })
       .once("error", (err) => {
         console.log(err);
@@ -97,7 +97,7 @@ function App() {
                   Mint Successful! Your NFT can be seen at {" "}
                   <a
                     target={""}
-                    href={"https://opensea.io/collection/Nekobits"}
+                    href={"https://opensea.io/collection/EggsBravo"}
                   >
                     Opensea.io
                   </a>
@@ -150,9 +150,9 @@ function App() {
                   You can still trade at {" "}
                   <a
                     target={""}
-                    href={"https://opensea.io/collection/Nekobits"}
+                    href={"https://opensea.io/collection/EggsBravo"}
                   >
-                    Nekobits NFT Collection
+                    EggsBravo NFT Collection
                   </a>
                 </s.TextDescription>
               </>
@@ -195,7 +195,7 @@ function App() {
                         getData();
                       }}
                     >
-                      {claimingNft ? "Busy..." : `Purchase ${mintQuantity} Nekobit`}
+                      {claimingNft ? "Busy..." : `Purchase ${mintQuantity} Eggs`}
                     </StyledButton>
                   </s.Container>
                 )}

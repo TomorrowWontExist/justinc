@@ -8,12 +8,12 @@ import styled from "styled-components";
 export const StyledNumberInput = styled.input.attrs((props) => ({
   type: 'number',
   min: 1,
-  max: 20,
+  max: 5,
   defaultValue: props.value,
 }))`
 border-radius: 50px;
 border: none;
-background-color: #228c75;
+background-color: #ffffff;
 padding: 5px;
 font-weight: bold;
 color: #000000;
@@ -33,11 +33,11 @@ export const StyledButton = styled.button`
   padding: 10px;
   border-radius: 50px;
   border: none;
-  background-color: #228c75;
+  background-color: #ffffff;
   padding: 10px;
   font-weight: bold;
   color: #000000;
-  width: 300px;
+  width: 200px;
   cursor: pointer;
   box-shadow: 2px 8px 4px -2px rgba(0, 0, 0, 0);
   -webkit-box-shadow: 2px 3px 10px -2px rgba(0, 0, 0, 0);
@@ -48,7 +48,7 @@ export const StyledButton = styled.button`
     -moz-box-shadow: none;
   }
   :hover {
-    -webkit-box-shadow: 2px 2px 30px -2px rgba(0, 255, 200, 1.0);
+    -webkit-box-shadow: 2px 2px 30px -2px rgba(0, 0, 250, 1.0);
   }
 `;
 
